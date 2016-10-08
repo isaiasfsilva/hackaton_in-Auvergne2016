@@ -1,0 +1,28 @@
+<style type="text/css">
+#btnplus{
+    position:absolute;
+    bottom: 40px;
+    right: 40px;
+}
+</style>
+
+
+<div data-role="popup" id="popupDialog">
+    <div data-role="header">
+        <h1 class='nd-title'>Selecione o meio de transporte!</h1>
+    </div>
+
+    <div data-role="content">
+
+        <a href="#" onclick="load_div('div_main','examples/pages/n_bus.html');" data-rel="back" data-role="button" data-inline="true" class="ui-btn ui-btn-primary"><i class='zmdi zmdi-directions-bus'></i> Bus</a>
+        <a href="#" data-rel="back" data-role="button" data-inline="true" class="ui-btn ui-btn-primary"><i class='zmdi zmdi-directions-bike'></i> Vélo</a>
+        <a href="#" data-rel="back" data-role="button" data-inline="true" class="ui-btn ui-btn-primary"><i class='zmdi zmdi-directions-car'></i> Voiture</a>
+        <a href="#" data-rel="back" data-role="button" data-inline="true" class="ui-btn ui-btn-primary"><i class='zmdi zmdi-directions-walk'></i> Marche</a>
+        <a href="#" data-rel="back" data-role="button" data-inline="true" class="ui-btn ui-btn-primary"><i class='zmdi zmdi-directions-railway'></i> Train</a>
+        <a href="#" data-rel="back" data-role="button" data-inline="true" class="ui-btn ui-btn-primary"><i class='zmdi zmdi-directions-subway'></i> Tram</a>
+    </div>
+</div>
+
+
+<a  href="#popupDialog" id="btnplus" class="ui-btn-fab  clr-btn-green ui-btn ui-btn-inline waves-effect waves-button waves-effect waves-button" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop"><i class="zmdi zmdi-plus zmd-2x"></i></a>
+
