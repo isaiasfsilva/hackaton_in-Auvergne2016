@@ -11,8 +11,8 @@
 						</div>
 						<div class='col-xs-8'>
 							<div class='box profile-text'>
-								<strong id="myname">FARIA Isaías </strong>
-								<span class='subline'>Sopra Steria (55 feuilles)</span>
+								<strong id="myname">-</strong>
+								<span class='subline'>Sopra Steria</span>
 							</div>
 						</div>
 					</div>
@@ -21,35 +21,68 @@
 				<div data-role="collapsible" data-inset="false"  data-collapsed-icon="carat-d" data-expanded-icon="carat-d" data-iconpos="right">
 					<h3>Mon Compte</h3>
 					<ul data-role="listview" data-inset="false" data-icon="false">
-					<li><a href="#" onclick="" data-ajax='false' data-icon="false"><i class="zmdi zmdi-account-circle zmd-fw"></i> Mon Profil</a></li>
-					<li><a href="#" onclick="setCookie('myId','',30); window.location.replace('inscription_employeur.html');" data-ajax='false' data-icon="false"><i class="zmdi zmdi-accounts zmd-fw"></i> Mes Employeurs</a></li>
+					<li><a href="#" onclick="load_div('div_main','examples/pages/mon_profile.html');" data-ajax='false' data-icon="false"><i class="zmdi zmdi-account-circle zmd-fw"></i> Mon Profil</a></li>
 					</ul>
 				</div>
 
 
 					<div data-role="collapsible" data-inset="false" data-collapsed-icon="false" data-expanded-icon="carat-d" data-iconpos="false">
-					<h3>Mes Feuilles</h3>
-				
+					<h3 onclick="load_div('div_main','examples/pages/mes_feuilles.html');" data-ajax='false' data-icon="false">Green Points</h3>
+
 				</div>
 				<div data-role="collapsible" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-d" data-iconpos="false">
-					<h3>Ma Contribution</h3>
-					<ul data-role="listview" data-icon="false">
-					</ul>
+					<h3 onclick="load_div('div_main','examples/pages/contribution.html');" data-ajax='false' data-icon="false">Ma Contribution</h3>
+
 				</div>
 				<ul data-role="listview" data-inset="false">
 				</ul>
+
 				<div data-role="collapsible" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-d" data-iconpos="false">
-					<h3>Produits Bio</h3>
-					<ul data-role="listview" data-icon="false">
+					<h3 onclick="window.open('http://www.lavieclaire.com/');">Produits Bio</h3>
+
+					</ul>
 				</div>
+
+
+				<div data-role="collapsible" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-d" data-iconpos="false">
+					<h3 onclick="load_div('div_main','examples/pages/convertir.html');" data-ajax='false' data-icon="false">Convertir Green Points</h3>
+					<ul data-role="listview" data-icon="false">
+					</ul>
+				</div>
+
+				<div data-role="collapsible" data-inset="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-d" data-iconpos="false">
+					<h3 onclick="load_div('div_main','examples/pages/about.html');" data-ajax='false' data-icon="false">À PROPOS</h3>
+					<ul data-role="listview" data-icon="false">
+					</ul>
+				</div>
+
 				</ul>
 
-				<div
+				<div>
 					<ul data-role="listview" data-inset="false" data-icon="false">
 					<li><a href="#" onclick="setCookie('myId','',30); window.location.replace('index_login.html');" data-ajax='false' data-icon="false"><i class="zmdi zmdi-power-off-setting zmd-fw"></i> Déconnexion</a></li>
+
 					</ul>
 				</div>
 			</div>
+  <script type="text/javascript">
+            $.ajax({
+                url:  getCookie('urlserver')+'pages/mon_profile/get_info.php' ,
+                crossDomain: true,
+                data: 'id='+getCookie('myId'),
+                dataType: 'json',
+                success: function(data) {
+                   $.each(data, function (key, val) {
+
+                        $('#myname').html(val.nome_familia);
+
+
+                    });
+                },
+                type: 'POST'
+            });
+
+        </script>
 			<!-- /panel left -->
 
 

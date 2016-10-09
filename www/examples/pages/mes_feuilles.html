@@ -1,0 +1,73 @@
+<script type="text/javascript">
+    load_title('Green Points');
+
+
+</script>
+
+                <form>
+
+
+                <div class="row">
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="box">
+
+                             <ul data-role="listview" data-icon="false">
+                                <li data-role="list-divider">
+                            <br><div id="my_points" style="width:100%; text-align:center;"><br></div>
+
+                           <div class="box">
+                              <div class="nd2-chart ct-piechart"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </form>
+
+
+ <script src="js/jquery.min.js"></script>
+   <script src="js/jquery.mobile.min.js"></script>
+
+    <link rel="stylesheet" href="vendor/chartist/style.css" />
+
+    <script src="vendor/chartist/chartist.min.js"></script>
+
+    <script src="js/nativedroid2.js"></script>
+
+   <script type="text/javascript">
+          $.ajax({
+                url:  getCookie('urlserver')+'pages/mon_feuilles/get_info.php' ,
+                crossDomain: true,
+                data: 'id='+getCookie('myId'),
+                dataType: 'json',
+                success: function(data) {
+                   $.each(data, function (key, val) {
+
+                        $('#my_points').html('Vous avez <b>'+val.mp+'</b> <img style="width:20px;" src="img/feuille.png">.<br>Contribue à un monde meilleur!<hr>Voilà comment vous contribuez à un <br>monde meilleur:');
+                        var pc1_data = {
+                          labels: ['Bus - 20.8%', 'Vélo - 12.5%', 'Voiture - 16.7%','Marche - 4.12%','Train - 37.5%','Tram - 8.3%'],
+                          series: [5, 3, 4,1,9,2]
+                        };
+
+                        var pc1_sum = function(a, b) { return a + b };
+
+                        new Chartist.Pie('.ct-piechart', pc1_data, {
+                          labelInterpolationFnc: function(value) {
+                            return value;
+                          }
+                        });
+
+
+
+                    });
+                },
+                type: 'POST'
+            });
+
+
+
+   </script>

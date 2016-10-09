@@ -232,7 +232,7 @@ text-align:center;
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript">
-var urlserver='http://172.27.164.227';
+var urlserver='http://192.168.43.187';
    function setCookie(cname, cvalue, exdays) {
             var d = new Date();
             d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -363,6 +363,8 @@ var urlserver='http://172.27.164.227';
 
 
 
+                    setCookie('urlserver','http://192.168.43.187/server/',30);
+                    setCookie('urlapplication','http://192.168.43.187/www/',30);
 </script>
                             </head>
                             <body>
@@ -387,14 +389,14 @@ var urlserver='http://172.27.164.227';
                   </div>
 
                   <div class="col-xs-12 form-group ">
-                        <a href="#" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="">Me connecter</a>
+                        <a href="#" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="">Se connecter</a>
                   </div>
                   <div class="row text-center">
                         <a href="#" id="register-form-link"><div class="register">Etes-vous une Entreprise? S'inscrire</div></a>
                   </div>
               </form>
               <form id="register-form" action="#" method="post" role="form" style="display: none;">
-                <a href="#" id="login-form-link" style="float:right;"><div class="register">Retourner</div></a>
+                <a href="#" id="login-form-link" style="float:right;"><div class="register">Retour</div></a>
 
                 <h2 class = "text-center">INSCRIVEZ-VOUS</h2>
 
@@ -416,14 +418,14 @@ var urlserver='http://172.27.164.227';
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
-                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Connectez-vous">
+                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="S'inscrire">
                       </div>
                     </div>
                   </div>
               </form>
 
                 <form id="oublie-form" action="#" method="post" role="form" style="display: none;">
-                <a href="#" id="oublie-login-form-link" style="float:right;"><div class="register">Retourner</div></a>
+                <a href="#" id="oublie-login-form-link" style="float:right;"><div class="register">Retour</div></a>
 
                 <h2 class = "text-center">RÉINITIALISER LE MOT DE PASSE</h2>
 
@@ -439,11 +441,6 @@ var urlserver='http://172.27.164.227';
                     </div>
                   </div>
               </form>
-
-
-
-
-
             </div>
           </div>
         </div>

@@ -1,0 +1,98 @@
+<script type="text/javascript">
+    load_title('Mon Profil');
+
+
+
+
+</script>
+
+                <form id="form_mon_profil">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="box">
+
+                            <label for="prenom">Prénom:</label>
+                            <input type="text" name="prenom" id="prenom" value="" data-clear-btn="true" placeholder="...">
+
+                            <label for="nom">Nom:</label>
+                            <input type="text" name="nom" id="nom" value="" data-clear-btn="true" placeholder="...">
+
+                            <label for="adresse">Adresse:</label>
+                            <input type="text" name="adresse" id="adresse" value="" data-clear-btn="true" placeholder="...">
+
+                            <label for="description">Description:</label>
+                            <input type="text" name="description" id="description" value="" data-clear-btn="true" placeholder="...">
+
+                        </div>
+
+                    </div>
+
+                </div>
+<hr>
+<a href="#" id="btn_act_mon_profil" class="ui-btn  clr-btn-green waves-effect waves-button waves-effect waves-button">Enregistrer</a>
+                </form>
+
+
+   <script src="js/jquery.min.js"></script>
+   <script src="js/jquery.mobile.min.js"></script>
+
+    <script src="js/nativedroid2.js"></script>
+    <script type="text/javascript">
+             $.ajax({
+                url:  getCookie('urlserver')+'pages/mon_profile/get_info.php' ,
+                crossDomain: true,
+                data: 'id='+getCookie('myId'),
+                dataType: 'json',
+                success: function(data) {
+                   $.each(data, function (key, val) {
+
+                        $('#prenom').val(val.name);
+                        $('#nom').val(val.nome_familia);
+                        $('#adresse').val(val.address);
+                        $('#description').val(val.description);
+                    });
+                },
+                type: 'POST'
+            });
+
+               $(function() {
+                $('#btn_act_mon_profil').click(function(e) {
+                    e.preventDefault();
+
+                    $.get( getCookie('urlserver')+"pages/mon_profile/set_info.php?myid="+getCookie('myId')+"&"+$('#form_mon_profil').serialize(), function( data ) {
+                       if(data=='ok'){
+                     $.ajax({
+                        url:  getCookie('urlserver')+'pages/mon_profile/get_info.php' ,
+                        crossDomain: true,
+                        data: 'id='+getCookie('myId'),
+                        dataType: 'json',
+                        success: function(data) {
+                           $.each(data, function (key, val) {
+
+                                $('#myname').html(val.nome_familia);
+
+
+                            });
+                },
+                type: 'POST'
+            });
+
+                                 new $.nd2Toast({ // The 'new' keyword is important, otherwise you would overwrite the current toast instance
+                                   message : "Opération réussie!", // Required
+
+                                   ttl : 8000 // optional, time-to-live in ms (default: 3000)
+                                 });
+
+
+
+                       }
+
+
+
+
+                      });
+                });
+
+            });
+    </script>
